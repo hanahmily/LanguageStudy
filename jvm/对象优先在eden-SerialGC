@@ -1,0 +1,15 @@
+java -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:+UseSerialGC Test
+[GC [DefNew: 6979K->294K(9216K), 0.0047600 secs] 6979K->6438K(19456K), 0.0047830 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+Heap
+ def new generation   total 9216K, used 4882K [0x00000001043f0000, 0x0000000104df0000, 0x0000000104df0000)
+  eden space 8192K,  56% used [0x00000001043f0000, 0x000000010486af60, 0x0000000104bf0000)
+  from space 1024K,  28% used [0x0000000104cf0000, 0x0000000104d39ba0, 0x0000000104df0000)
+  to   space 1024K,   0% used [0x0000000104bf0000, 0x0000000104bf0000, 0x0000000104cf0000)
+ tenured generation   total 10240K, used 6144K [0x0000000104df0000, 0x00000001057f0000, 0x00000001057f0000)
+   the space 10240K,  60% used [0x0000000104df0000, 0x00000001053f0030, 0x00000001053f0200, 0x00000001057f0000)
+ compacting perm gen  total 21248K, used 2662K [0x00000001057f0000, 0x0000000106cb0000, 0x000000010a9f0000)
+   the space 21248K,  12% used [0x00000001057f0000, 0x0000000105a89968, 0x0000000105a89a00, 0x0000000106cb0000)
+No shared spaces configured.
+
+
+发生GC的时候原有，原有6m对象全部进入年老代，4m对象在eden中被分配

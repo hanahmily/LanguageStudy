@@ -1,0 +1,12 @@
+java -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC Test
+[GC [ParNew: 6980K->326K(9216K), 0.0040310 secs] 6980K->6472K(19456K), 0.0040670 secs] [Times: user=0.03 sys=0.01, real=0.00 secs] 
+Heap
+ par new generation   total 9216K, used 5938K [0x0000000108b50000, 0x0000000109550000, 0x0000000109550000)
+  eden space 8192K,  68% used [0x0000000108b50000, 0x00000001090caf60, 0x0000000109350000)
+  from space 1024K,  31% used [0x0000000109450000, 0x00000001094a1a68, 0x0000000109550000)
+  to   space 1024K,   0% used [0x0000000109350000, 0x0000000109350000, 0x0000000109450000)
+ concurrent mark-sweep generation total 10240K, used 6146K [0x0000000109550000, 0x0000000109f50000, 0x0000000109f50000)
+ concurrent-mark-sweep perm gen total 21248K, used 2663K [0x0000000109f50000, 0x000000010b410000, 0x000000010f150000)
+
+
+分配方式也SerialNew相同，其实CMS是年老代收集器。这个例子主要看看GC日志中对CMS的展示

@@ -1,0 +1,14 @@
+java -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:PretenureSizeThreshold=3145728 -XX:+UseSerialGC Test
+Heap
+ def new generation   total 9216K, used 999K [0x00000001058b0000, 0x00000001062b0000, 0x00000001062b0000)
+  eden space 8192K,  12% used [0x00000001058b0000, 0x00000001059a9ec0, 0x00000001060b0000)
+  from space 1024K,   0% used [0x00000001060b0000, 0x00000001060b0000, 0x00000001061b0000)
+  to   space 1024K,   0% used [0x00000001061b0000, 0x00000001061b0000, 0x00000001062b0000)
+ tenured generation   total 10240K, used 4096K [0x00000001062b0000, 0x0000000106cb0000, 0x0000000106cb0000)
+   the space 10240K,  40% used [0x00000001062b0000, 0x00000001066b0010, 0x00000001066b0200, 0x0000000106cb0000)
+ compacting perm gen  total 21248K, used 2659K [0x0000000106cb0000, 0x0000000108170000, 0x000000010beb0000)
+   the space 21248K,  12% used [0x0000000106cb0000, 0x0000000106f48e28, 0x0000000106f49000, 0x0000000108170000)
+No shared spaces configured.
+
+
+通过PretenureSizeThreshold参数控制超过多大的对象直接进入年老代。该例子中是分配了4M对象

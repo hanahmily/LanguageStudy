@@ -1,0 +1,11 @@
+java -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:PretenureSizeThreshold=3145728 -XX:+UseConcMarkSweepGC Test
+Heap
+ par new generation   total 9216K, used 999K [0x00000001114c0000, 0x0000000111ec0000, 0x0000000111ec0000)
+  eden space 8192K,  12% used [0x00000001114c0000, 0x00000001115b9fd8, 0x0000000111cc0000)
+  from space 1024K,   0% used [0x0000000111cc0000, 0x0000000111cc0000, 0x0000000111dc0000)
+  to   space 1024K,   0% used [0x0000000111dc0000, 0x0000000111dc0000, 0x0000000111ec0000)
+ concurrent mark-sweep generation total 10240K, used 4096K [0x0000000111ec0000, 0x00000001128c0000, 0x00000001128c0000)
+ concurrent-mark-sweep perm gen total 21248K, used 2660K [0x00000001128c0000, 0x0000000113d80000, 0x0000000117ac0000)
+
+
+通过PretenureSizeThreshold参数控制超过多大的对象直接进入年老代。该例子中是分配了4M对象

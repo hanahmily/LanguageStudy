@@ -1,0 +1,14 @@
+ava -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:+UseParallelGC Test
+Heap
+ PSYoungGen      total 9216K, used 7143K [0x000000010f3e0000, 0x000000010fde0000, 0x000000010fde0000)
+  eden space 8192K, 87% used [0x000000010f3e0000,0x000000010fad9ef0,0x000000010fbe0000)
+  from space 1024K, 0% used [0x000000010fce0000,0x000000010fce0000,0x000000010fde0000)
+  to   space 1024K, 0% used [0x000000010fbe0000,0x000000010fbe0000,0x000000010fce0000)
+ ParOldGen       total 10240K, used 5120K [0x000000010e9e0000, 0x000000010f3e0000, 0x000000010f3e0000)
+  object space 10240K, 50% used [0x000000010e9e0000,0x000000010eee0010,0x000000010f3e0000)
+ PSPermGen       total 21248K, used 2659K [0x00000001097e0000, 0x000000010aca0000, 0x000000010e9e0000)
+  object space 21248K, 12% used [0x00000001097e0000,0x0000000109a78d30,0x000000010aca0000)
+gaos-MacBook-Pro:jvm gaohongtao$ 
+
+
+新生代分配不下，直接在年老代分配，不进行复制。这样确实可以减少gc，但当gc发生的时候单次停顿事件就会很长呢
